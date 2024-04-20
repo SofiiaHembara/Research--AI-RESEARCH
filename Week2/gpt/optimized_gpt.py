@@ -242,4 +242,3 @@ class CustomCoffee(Coffee, FlavorMixin):
             return super().__eq__(value) and self.sugar == value.sugar\
                   and self.syrup == value.syrup and self.cinammon == value.cinammon
         return super().__eq__(value)
-

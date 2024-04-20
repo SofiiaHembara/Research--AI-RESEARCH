@@ -3,7 +3,6 @@ Module for working in a coffee shop
 (creating an order, checking recipes, adding flavours, etc.)
 """
 
-
 RECIPE = {
     "espresso": {
         'espresso': 30},
@@ -121,4 +120,5 @@ class Track:
         if self.__milk < 0:
             return 0
         return self.__milk - self.total_milk()
+    
     

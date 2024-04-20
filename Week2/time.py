@@ -1,3 +1,9 @@
+import time
+ 
+# record start time
+start = time.time()
+ 
+# define a sample code segment
 """
 keyword_processor.py
 
@@ -55,3 +61,18 @@ def find_films_with_keywords(film_keywords: dict, num_of_films: int) -> list:
     film_counter = Counter(film for keywords in film_keywords.values() for film in keywords)
     sorted_films = sorted(film_counter.items(), key=lambda x: (-x[1], x[0]))
     return list(islice(sorted_films, num_of_films))
+
+
+dicti = {'USA': ['Dovbush', 'Top Gun: Maverick', 'Ticket to Paradise'], \
+'Ukraine': ['Dovbush', 'Schedryk', 'Kruty 1918']}
+
+print(find_film_keywords(dicti, 'Dovbush'))
+print(find_films_with_keywords(dicti, 2))
+ 
+# record end time
+end = time.time()
+ 
+# print the difference between start 
+# and end time in milli. secs
+print("The time of execution of above program is :",
+      (end-start) * 10**3, "ms")

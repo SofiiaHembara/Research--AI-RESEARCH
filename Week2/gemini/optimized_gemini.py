@@ -63,7 +63,7 @@ class Track:
         A method for checking whether the order can be accepted,
          as well as for accepting the order itself
         """
-        if not isinstance(order, Coffee):
+        if not isinstance(order):
             return "We can't create anything that is not a Coffee instance."
         if not self.safety:
             return 'Unfortunately, now it is not safe to make coffee.'

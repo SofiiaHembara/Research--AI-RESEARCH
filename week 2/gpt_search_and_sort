@@ -1,0 +1,104 @@
+import unittest
+def linear_search(list_of_values, value):
+    for i in range(len(list_of_values)):
+        if list_of_values[i] == value:
+            return i
+    return -1
+
+def merge_sort(lst):
+    if len(lst) <= 1:
+        return lst
+    
+    mid = len(lst) // 2
+    left_half = merge_sort(lst[:mid])
+    right_half = merge_sort(lst[mid:])
+    
+    return merge(left_half, right_half)
+
+def merge(left, right):
+    result = []
+    left_index, right_index = 0, 0
+    
+    while left_index < len(left) and right_index < len(right):
+        if left[left_index] < right[right_index]:
+            result.append(left[left_index])
+            left_index += 1
+        else:
+            result.append(right[right_index])
+            right_index += 1
+            
+    result.extend(left[left_index:])
+    result.extend(right[right_index:])
+    
+    return result
+
+def binary_search(list_of_values, value):
+    low = 0
+    high = len(list_of_values) - 1
+    
+    while low <= high:
+        mid = (low + high) // 2
+        if list_of_values[mid] == value:
+            return mid
+        elif list_of_values[mid] < value:
+            low = mid + 1
+        else:
+            high = mid - 1
+            
+    return -1
+
+def selection_sort(lst):
+    for i in range(len(lst)):
+        min_index = i
+        for j in range(i+1, len(lst)):
+            if lst[j] < lst[min_index]:
+                min_index = j
+        lst[i], lst[min_index] = lst[min_index], lst[i]
+    return lst
+
+def quick_sort(lst):
+    if len(lst) <= 1:
+        return lst
+    
+    pivot = lst[len(lst) // 2]
+    left = [x for x in lst if x < pivot]
+    middle = [x for x in lst if x == pivot]
+    right = [x for x in lst if x > pivot]
+    
+    return quick_sort(left) + middle + quick_sort(right)
+
+# Приклад використання:
+my_list = [3, 1, 5, 7, 2, 4, 6, 8]
+print("Linear Search:", linear_search(my_list, 5))
+print("Merge Sort:", merge_sort(my_list.copy()))
+print("Binary Search:", binary_search(sorted(my_list), 5))
+print("Selection Sort:", selection_sort(my_list.copy()))
+print("Quick Sort:", quick_sort(my_list.copy()))
+
+
+class TestAlgorithms(unittest.TestCase):
+    
+    def test_linear_search(self):
+        self.assertEqual(linear_search([1, 2, 3, 4, 5], 3), 2)
+        self.assertEqual(linear_search([1, 2, 3, 4, 5], 6), -1)
+        self.assertEqual(linear_search([], 3), -1)
+    
+    def test_merge_sort(self):
+        self.assertEqual(merge_sort([3, 1, 5, 7, 2, 4, 6, 8]), [1, 2, 3, 4, 5, 6, 7, 8])
+        self.assertEqual(merge_sort([]), [])
+    
+    def test_binary_search(self):
+        self.assertEqual(binary_search([1, 2, 3, 4, 5], 3), 2)
+        self.assertEqual(binary_search([1, 2, 3, 4, 5], 6), -1)
+        self.assertEqual(binary_search([], 3), -1)
+    
+    def test_selection_sort(self):
+        self.assertEqual(selection_sort([3, 1, 5, 7, 2, 4, 6, 8]), [1, 2, 3, 4, 5, 6, 7, 8])
+        self.assertEqual(selection_sort([]), [])
+    
+    def test_quick_sort(self):
+        self.assertEqual(quick_sort([3, 1, 5, 7, 2, 4, 6, 8]), [1, 2, 3, 4, 5, 6, 7, 8])
+        self.assertEqual(quick_sort([]), [])
+
+if __name__ == "__main__":
+    unittest.main()

@@ -10,7 +10,7 @@ def memory_usage(filename):
         print("Файл не знайдено.")
         return None
 
-filename = 'shal_dmytro_genimi1.py'
+filename = 'shal_dmytro_gemini2.py'
 
 memory = memory_usage(filename)
 if memory is not None:

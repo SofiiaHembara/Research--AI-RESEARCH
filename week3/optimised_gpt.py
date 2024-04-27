@@ -51,7 +51,7 @@ def compute_derivative(f, x_0):
     >>> compute_derivative(lambda x: x ** 2 + x, 2)
     5.0
     """
-    dx = 1
+    dx = 1.0
     aprox = []
     i = 0
     while True:
@@ -61,10 +61,10 @@ def compute_derivative(f, x_0):
         dF -= f(x)
         der = dF / dx
         aprox.append(der)
-        if i != 0 and abs(aprox[i] - aprox[i - 1]) < 0.01:
+        if i != 0 and abs(aprox[i] - aprox[i - 1]) < 0.001:
             return round(aprox[i], 2)
         i += 1
-        dx /= 10
+        dx /= 10.0
 
 def get_tangent(f, x_0):
     """
@@ -82,7 +82,7 @@ def get_tangent(f, x_0):
     if b == 0:
         equation = f"{abs(round(a, 2))} * x"
     else:
-        equation = f"{'- ' if a < 0 else ''}{abs(round(a, 2))} * x {'-' if b < 0 else '+'} {(round(b, 2))}"
+        equation = f"{'- ' if a < 0 else ''}{abs(round(a, 2))} * x {'-' if b < 0 else '+'} {abs(round(b, 2))}"
     return equation
 
 def get_root(f, a, b):

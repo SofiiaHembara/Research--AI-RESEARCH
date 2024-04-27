@@ -14,7 +14,7 @@ def find_max_1(f, points):
 
 def find_max_2(f, points):
     """ 
-    (function, list(number)) -> (number)
+    (function, list(number)) -> (number
     
     Find and return list of points where function f has the maximal value.
     
